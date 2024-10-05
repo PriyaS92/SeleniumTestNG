@@ -1,0 +1,16 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "NSE India Stock Test" verbose="1" parallel="tests" thread-count="2" configfailurepolicy="continue">
+	<test name="Chrome Browser" annotations="JDK" preserve-order="true">
+        <parameter name="browser" value="Chrome"/>
+    	<classes>
+            <class name="NSE_Stock"/>
+        </classes>
+    </test>
+    <test name="Edge Browser" annotations="JDK" preserve-order="true">
+      <parameter name="browser" value="Edge"/>
+        <classes>
+            <class name="NSE_Stock"/>
+        </classes>
+    </test>
+</suite>
