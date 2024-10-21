@@ -28,8 +28,8 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.google.common.io.Files;
 
-import CommonFunctions.CommonTest;
-import CommonFunctions.Reports;
+import commonfunctions.CommonTest;
+import commonfunctions.Reports;
 
 
 public class StockPage extends CommonTest{
@@ -95,9 +95,11 @@ public class StockPage extends CommonTest{
 	public void historic_data(String data,ITestContext testContext,Double high_price,Double low_price) {
 		try {
 			logger.info("Retrieving historic data");
-			historical_data_tab.click();
+			js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].click()",historical_data_tab);
+			//historical_data_tab.click();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(35));
-			periodic_high_low_data_tab.click();
+			js.executeScript("arguments[0].click()",periodic_high_low_data_tab);
 			driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(3));
 			String header_1 = driver.findElement(By.xpath("//div[@id='card1']/descendant::h4[1]")).getText().trim();
 			String from_date = driver.findElement(By.xpath("//div[@id='card1']/descendant::h4[2]/span[1]")).getText().trim();
@@ -107,7 +109,6 @@ public class StockPage extends CommonTest{
 			logger.info(header_1+from_date+" to "+to_date);
 			logger.info("High price of "+data+": "+high_value);
 			logger.info("Low price of "+data+": "+low_value);
-			js = (JavascriptExecutor)driver;
 			js.executeScript("document.body.style.zoom ='80%'");
 			Reports.setTest(extent.createTest("NSE India Stock - Post Stock - "+testContext.getName(), "For company:"+data));
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

@@ -23,8 +23,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
-import CommonFunctions.CommonTest;
-import CommonFunctions.ReadExcel;
+import commonfunctions.CommonTest;
+import commonfunctions.ReadExcel;
 import pages.StockPage;
 
 public class NSE_Stock extends CommonTest{

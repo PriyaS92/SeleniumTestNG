@@ -1,4 +1,4 @@
-package CommonFunctions;
+package commonfunctions;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;

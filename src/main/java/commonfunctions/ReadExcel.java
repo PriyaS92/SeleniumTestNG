@@ -1,7 +1,9 @@
-package CommonFunctions;
+package commonfunctions;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
@@ -17,9 +19,10 @@ public class ReadExcel {
 	ArrayList<String> test_data = new ArrayList<String>();
 	Set<Double> low_prices = new TreeSet<Double>();
 	Set<Double> high_prices = new TreeSet<Double>();
+	FileInputStream file;
 	public ArrayList<String> excel_Read() {
 		try {
-			FileInputStream file = new FileInputStream(new File("C:\\Users\\Administrator\\git\\SeleniumTestNG\\src\\main\\resources\\Company_Names.xlsx"));
+			file = new FileInputStream(new File(System.getProperty("user.dir")+"/src/main/resources/Company_Names.xlsx"));
 			
 			//Create Workbook instance holding reference to .xlsx file
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -56,10 +59,20 @@ public class ReadExcel {
 					  } 
 			  }
 			}
-			file.close();
+			
 		}
-		catch(Exception e) {
+		catch(FileNotFoundException ex) {
+			ex.printStackTrace();
+		}
+		catch(IOException e) {
 			e.printStackTrace();
+		}
+		finally {
+			try {
+				file.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return test_data;
 	}

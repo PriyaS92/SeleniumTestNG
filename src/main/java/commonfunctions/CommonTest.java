@@ -1,4 +1,4 @@
-package CommonFunctions;
+package commonfunctions;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,7 +73,7 @@ public class CommonTest {
 			options.addArguments("--disable-blink-features=AutomationControlled");
 			options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation" , "load-extension"));
 			options.setExperimentalOption("useAutomationExtension", false);
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Administrator\\git\\SeleniumTestNG\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/chromedriver.exe");
 			driver = new ChromeDriver(options);
 		}
 		else if(browser.equals("Edge")) {
@@ -86,7 +86,7 @@ public class CommonTest {
 			 options.addArguments("--disable-site-isolation-trials");
 			 options.addArguments("--disable-blink-features");
 			 options.addArguments("--disable-blink-features=AutomationControlled");
-			 System.setProperty("webdriver.edge.driver", "C:\\Users\\Administrator\\git\\SeleniumTestNG\\msedgedriver.exe");
+			 System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")+"/msedgedriver.exe");
 			 driver = new EdgeDriver(options);
 		}
 		threadLocalDriver.set(driver);
